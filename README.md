@@ -58,6 +58,8 @@ Please check requirements.txt for detailed dependency information. Main packages
 │   ├── README.md
 ├── figures/
 │   └── workflow.png                              # Research workflow diagram
+├── shap_values_train.pkl                         # Pre-computed SHAP values for training set (477 compounds)
+├── shap_values_test.pkl                          # Pre-computed SHAP values for test set (120 compounds)
 ├── requirements.txt
 └── README.md
 ```

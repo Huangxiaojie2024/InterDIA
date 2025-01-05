@@ -1,0 +1,27 @@
+# Core dependencies
+numpy==1.23.5
+pandas==2.2.3
+scipy==1.11.2
+pickle5==0.0.11  # For pickle operations
+warnings==0.1.0  # For warning controls
+
+# Machine Learning Libraries
+scikit-learn==1.5.1
+xgboost==1.6.1
+lightgbm==3.3.5
+imbalanced-learn==0.12.3
+deap==1.4.1
+hyperopt==0.2.7
+
+# Visualization
+matplotlib==3.9.2
+seaborn==0.13.2
+shap==0.46.0
+plotly==5.24.1  # For interactive visualizations
+
+# Utility
+joblib==1.4.2
+typing-extensions==4.11.0
+
+# Optional but recommended for reproducibility
+python==3.9.19  # The specific version used in development

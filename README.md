@@ -54,10 +54,10 @@ Please check requirements.txt for detailed dependency information. Main packages
 │   └── DIA_RDKit_Prediction.ipynb                # Main analysis notebook using RDKit descriptors
 ├── streamlit/
 │   ├── app.py                  # Main Streamlit application
-│   ├── requirements.txt        # Streamlit-specific dependencies
-│   ├── scaler_and_model.pkl    # Saved model and scaler
-│   ├── Xtrain_std.pkl          # Standardized training data
-│   ├── README.md
+│   └── requirements.txt        # Streamlit-specific dependencies
+│   └── scaler_and_model.pkl    # Saved model and scaler
+│   └── Xtrain_std.pkl          # Standardized training data
+│   └── README.md
 ├── figures/
 │   └── workflow.png                              # Research workflow diagram
 ├── shap_values_train.pkl                         # Pre-computed SHAP values for training set (477 compounds)

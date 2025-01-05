@@ -48,6 +48,8 @@ Please check requirements.txt for detailed dependency information. Main packages
 ├── data/
 │   ├── DIA_trainingset_RDKit_descriptors.csv     # Training set with RDKit descriptors
 │   └── DIA_testset_RDKit_descriptors.csv         # Test set with RDKit descriptors
+│   └── DIA-TrainingSet.sdf       
+│   └── DIA-TestSet.sdf      
 ├── notebooks/
 │   └── DIA_RDKit_Prediction.ipynb                # Main analysis notebook using RDKit descriptors
 ├── streamlit/

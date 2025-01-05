@@ -12,6 +12,8 @@ This folder contains the training and test datasets for the InterDIA project.
 DataSet/
 ├── DIA_trainingset_RDKit_descriptors.csv   # Training set with RDKit descriptors
 └── DIA_testset_RDKit_descriptors.csv       # Test set with RDKit descriptors
+└── DIA-TrainingSet.sdf       
+└── DIA-TestSet.sdf      
 ```
 
 ## Data Format

@@ -1,6 +1,6 @@
 
 # InterDIA: Interpretable Prediction of Drug-induced Autoimmunity through Ensemble Machine Learning
-## Streamlit Web Application
+## Streamlit Web Application (https://drug-induced-autoimmunity-predictor.streamlit.app/)
 
 ### File Structure
 ```

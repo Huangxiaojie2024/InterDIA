@@ -7,9 +7,8 @@
 webapp/
 ├── app.py                  # Main Streamlit application
 ├── requirements.txt        # Streamlit-specific dependencies
-├── models/
-│   ├── scaler_and_model.pkl    # Saved model and scaler
-│   └── Xtrain_std.pkl          # Standardized training data
+├── scaler_and_model.pkl    # Saved model and scaler
+├── Xtrain_std.pkl          # Standardized training data
 
 ```
 

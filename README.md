@@ -1,9 +1,20 @@
-# InterDIA
 # InterDIA: Interpretable Prediction of Drug-induced Autoimmunity through Ensemble Machine Learning
 
 ## Overview
 InterDIA is a comprehensive and interpretable machine learning framework for predicting drug-induced autoimmunity (DIA) toxicity. By integrating state-of-the-art ensemble learning approaches with multi-strategy feature selection, this framework provides accurate predictions while offering mechanistic insights through SHAP (SHapley Additive exPlanations) analysis.
-
+![Research Workflow](figures/workflow.png)
+## The workflow consists of three main components:
+## Feature Representation:
+Characterization of compounds through diverse molecular descriptor sets (RDKit, Mold2, DS, and MOE)
+Comprehensive molecular property characterization
+## Learning Framework:
+Feature preprocessing and multi-strategy selection
+Advanced ensemble resampling approaches
+Model optimization and validation
+## Model Interpretation:
+Global feature importance analysis using SHAP
+Individual prediction interpretation
+Structure-toxicity relationship insights
 ## Key Features
 - Advanced ensemble resampling techniques for handling imbalanced data
 - Multi-strategy feature selection approaches

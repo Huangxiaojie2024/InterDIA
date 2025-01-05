@@ -40,10 +40,10 @@ Please check requirements.txt for detailed dependency information. Main packages
 - Core Dependencies
   - numpy==1.23.5
   - pandas==2.2.3
-  - scikit-learn==1.5.1
   - scipy==1.11.2
 
 - Machine Learning Libraries
+  - scikit-learn==1.5.1
   - xgboost==1.6.1
   - lightgbm==3.3.5
   - imbalanced-learn==0.12.3
@@ -56,51 +56,6 @@ Please check requirements.txt for detailed dependency information. Main packages
   - shap==0.46.0
   - plotly==5.24.1
 
-## Usage
-
-### Data Preprocessing
-```python
-from sklearn.preprocessing import StandardScaler
-from sklearn.feature_selection import VarianceThreshold
-
-# Preprocess features using the provided pipeline
-X_train_processed, X_test_processed = preprocess_features(Xtrain, Xtest)
-```
-
-### Model Training
-```python
-# Initialize and train the Easy Ensemble Classifier
-from imblearn.ensemble import EasyEnsembleClassifier
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import AdaBoostClassifier
-
-model_eec = EasyEnsembleClassifier(
-    n_estimators=10,
-    estimator=AdaBoostClassifier(
-        estimator=DecisionTreeClassifier(max_depth=7, random_state=1),
-        n_estimators=178,
-        learning_rate=0.92,
-        algorithm='SAMME.R',
-        random_state=1
-    ),
-    random_state=1,
-    n_jobs=-1
-)
-
-model_eec.fit(X_train_processed, Ytrain)
-```
-
-### Model Evaluation
-```python
-# Evaluate model performance
-results, confusion_matrix = evaluate_model_performance(
-    model_eec, X_train_processed, Ytrain, X_test_processed, Ytest)
-```
-
-## Online Platform
-Access our web-based prediction platform at:
-https://drug-induced-autoimmunity-predictor.streamlit.app/
-
 ## Code Structure
 ```
 .
@@ -108,35 +63,16 @@ https://drug-induced-autoimmunity-predictor.streamlit.app/
 │   ├── DIA_trainingset_RDKit_descriptors.csv     # Training set with RDKit descriptors
 │   └── DIA_testset_RDKit_descriptors.csv         # Test set with RDKit descriptors
 ├── notebooks/
-│   └── RDKit_DIA_Prediction.ipynb                # Main analysis notebook using RDKit descriptors
-├── src/
-│   ├── models/
-│   │   ├── feature_selection.py
-│   │   ├── model_training.py
-│   │   └── evaluation.py
-│   ├── utils/
-│   │   ├── preprocessing.py
-│   │   └── visualization.py
-│   └── streamlit/
-│       ├── app.py                                # Streamlit web application
-│       ├── requirements.txt                      # Streamlit-specific requirements
-│       └── utils/                               # Utility functions for web app
+│   └── DIA_RDKit_Prediction.ipynb                # Main analysis notebook using RDKit descriptors
+
+├── streamlit/
+│   ├── app.py                                # Streamlit web application
+│   ├── requirements.txt                      # Streamlit-specific requirements
+│   └── utils/                               # Utility functions for web app
 ├── figures/
 │   └── workflow.png                              # Research workflow diagram
 ├── requirements.txt
 └── README.md
-```
-
-## Research Workflow
-
-The complete research workflow is illustrated in the figure below:
-
-![Research Workflow](figures/workflow.png)
-
-The workflow consists of three main components:
-1. Feature Representation: Characterization of compounds through RDKit molecular descriptors
-2. Learning Framework: Integration of feature preprocessing, selection, and ensemble learning
-3. Model Interpretation: SHAP analysis for mechanistic insights
 ```
 
 ## Citations
@@ -144,11 +80,8 @@ If you use this code in your research, please cite:
 
 ```
 Huang, L., Liu, P., & Huang, X. (2024). InterDIA: Interpretable Prediction of Drug-induced 
-Autoimmunity through Ensemble Machine Learning. Toxicology.
+Autoimmunity through Ensemble Machine Learning. 
 ```
-
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Contributing
 We welcome contributions to this project. Please feel free to submit issues and pull requests.

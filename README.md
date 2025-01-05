@@ -13,26 +13,12 @@ InterDIA is a comprehensive and interpretable machine learning framework for pre
 ## Dataset
 The dataset comprises 597 drugs (148 DIA-positive and 449 DIA-negative):
 - Training set: 477 drugs (118 positive, 359 negative)
-- External validation set: 120 drugs (30 positive, 90 negative)
+- Test set: 120 drugs (30 positive, 90 negative)
 
 ## Installation
 
 ### Requirements
-Python 3.9.19 is required for running this project. We recommend using a virtual environment:
-
-```bash
-# Create virtual environment
-python -m venv venv
-
-# Activate virtual environment
-# On Windows:
-venv\Scripts\activate
-# On Unix or MacOS:
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
+Python 3.9.19 is required for running this project. 
 
 ### Dependencies
 Please check requirements.txt for detailed dependency information. Main packages include:

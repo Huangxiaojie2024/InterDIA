@@ -64,11 +64,12 @@ Please check requirements.txt for detailed dependency information. Main packages
 │   └── DIA_testset_RDKit_descriptors.csv         # Test set with RDKit descriptors
 ├── notebooks/
 │   └── DIA_RDKit_Prediction.ipynb                # Main analysis notebook using RDKit descriptors
-
 ├── streamlit/
-│   ├── app.py                                # Streamlit web application
-│   ├── requirements.txt                      # Streamlit-specific requirements
-│   └── utils/                               # Utility functions for web app
+│   ├── app.py                  # Main Streamlit application
+│   ├── requirements.txt        # Streamlit-specific dependencies
+│   ├── scaler_and_model.pkl    # Saved model and scaler
+│   ├── Xtrain_std.pkl          # Standardized training data
+│   ├── README.md
 ├── figures/
 │   └── workflow.png                              # Research workflow diagram
 ├── requirements.txt

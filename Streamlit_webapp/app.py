@@ -8,7 +8,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 
-# 设置页面配置
+# Page Title and Introduction
 st.set_page_config(
     page_title="Drug-induced Autoimmunity (DIA) Predictor",
     page_icon="💊",
@@ -16,7 +16,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# 自定义CSS样式
+# Custom CSS Styles
 st.markdown("""
     <style>
         .main {
@@ -73,7 +73,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# 加载模型和标准化器
+# Load Model and Scaler
 @st.cache_resource
 def load_model():
     with open('scaler_and_model.pkl', 'rb') as f:
@@ -84,7 +84,7 @@ def load_model():
 
 scaler, best_estimator_eec, Xtrain_std = load_model()
 
-# 65个最佳分子描述符名称
+# List of 65 Optimal Molecular Descriptor Names
 descriptor_names = ['BalabanJ', 'Chi0', 'EState_VSA1', 'EState_VSA10', 'EState_VSA4', 'EState_VSA6', 
                     'EState_VSA9', 'HallKierAlpha', 'Ipc', 'Kappa3', 'NHOHCount', 'NumAliphaticHeterocycles',
                     'NumAliphaticRings', 'NumAromaticCarbocycles', 'NumAromaticRings', 'PEOE_VSA10',
@@ -97,7 +97,7 @@ descriptor_names = ['BalabanJ', 'Chi0', 'EState_VSA1', 'EState_VSA10', 'EState_V
                     'fr_methoxy', 'fr_morpholine', 'fr_nitro_arom', 'fr_para_hydroxylation', 'fr_phos_ester', 'fr_piperdine', 
                     'fr_pyridine', 'fr_sulfide', 'fr_term_acetylene', 'fr_unbrch_alkane']
 
-# 页面标题和介绍
+# Page Title and Introduction
 st.title("🔬 Drug-induced Autoimmunity (DIA) Predictor")
 st.markdown("""
     <div style='background-color: white; padding: 1rem; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);'>
@@ -107,7 +107,7 @@ st.markdown("""
         </p>
     </div>
 """, unsafe_allow_html=True)
-# 侧边栏设计
+# Sidebar Design
 with st.sidebar:
     st.header("📊 Data Input")
     uploaded_file = st.file_uploader("Upload RDKit descriptors CSV", type=['csv'])
@@ -133,22 +133,22 @@ with st.sidebar:
         - **Data Source**: RDKit descriptors calculated from http://www.scbdd.com/rdk_desc/index/
     """)
 
-# 主要内容
+# Main Content
 if uploaded_file is not None:
     try:
         df = pd.read_csv(uploaded_file)
         
-        # 数据验证
+        # Data Validation
         missing_descriptors = [desc for desc in descriptor_names if desc not in df.columns]
         if missing_descriptors:
             st.error(f"Missing required descriptors: {', '.join(missing_descriptors)}")
         else:
-            # 数据处理和预测
+            # Data Processing and Predictions
             X = df[descriptor_names].values
             X_std = scaler.transform(X)
             predictions_prob = best_estimator_eec.predict_proba(X_std)
             
-            # 创建结果DataFrame
+            # Create Results DataFrame
             results_df = pd.DataFrame({
                 "Compound_ID": range(1, len(df) + 1),
                 "DIA_negative_prob": predictions_prob[:, 0],
@@ -159,7 +159,7 @@ if uploaded_file is not None:
                                    labels=['Low', 'Medium-Low', 'Medium-High', 'High'])
             })
             
-            # 显示关键指标
+            # Display Key Metrics
             st.subheader("📊 Prediction Summary")
             col1, col2, col3, col4 = st.columns(4)
             
@@ -187,12 +187,12 @@ if uploaded_file is not None:
                          f"{avg_prob:.3f}",
                          f"±{np.std(predictions_prob[:, 1]):.3f}")
 
-            # 风险分布可视化
+            # Risk Distribution Visualization
             st.subheader("📈 Risk Distribution Analysis")
             col1, col2 = st.columns(2)
             
             with col1:
-                # 饼图显示预测结果分布
+                # Pie Chart for Prediction Distribution
                 fig_pie = go.Figure(data=[go.Pie(
                     labels=['DIA Positive', 'DIA Negative'],
                     values=[positive_count, len(df) - positive_count],
@@ -207,7 +207,7 @@ if uploaded_file is not None:
                 st.plotly_chart(fig_pie, use_container_width=True)
             
             with col2:
-                # 风险等级条形图
+                # Bar Chart for Risk Levels
                 risk_counts = results_df['Risk_Level'].value_counts().sort_index()
                 fig_risk = go.Figure(data=[go.Bar(
                     x=risk_counts.index,
@@ -223,14 +223,14 @@ if uploaded_file is not None:
                 )
                 st.plotly_chart(fig_risk, use_container_width=True)
 
-            # 显示详细结果表格
+            # Show Detailed Results Table
             st.subheader("📋 Detailed Results")
             st.dataframe(results_df.style.background_gradient(
                 subset=['DIA_positive_prob'],
                 cmap='RdYlBu_r'
             ))
             
-            # 下载结果
+            # Download Results
             csv = results_df.to_csv(index=False)
             st.download_button(
                 label="📥 Download Complete Results",
@@ -243,7 +243,7 @@ if uploaded_file is not None:
             st.markdown("---")
             st.subheader("🔍 SHAP Analysis")
             
-            # 选择化合物
+            # Select Compound
             selected_compound = st.selectbox(
                 "Select a compound for detailed analysis:",
                 range(len(df)),
@@ -258,7 +258,7 @@ if uploaded_file is not None:
             if selected_compound is not None:
                 st.session_state.selected_compound = selected_compound
                 
-                # 显示所选化合物的预测详情
+                # Display Selected Compound Prediction Details
                 col1, col2, col3 = st.columns(3)
                 with col1:
                     st.metric(
@@ -285,34 +285,34 @@ if uploaded_file is not None:
                         Xtrain_std
                     )
                     
-                    # 设置随机种子
+                    # Set Random Seed
                     np.random.seed(1)
                     
-                    # 计算SHAP值
+                    # Calculate SHAP Values
                     shap_values = explainer.shap_values(
                         X_std[selected_compound:selected_compound+1],
-                        nsamples=150  # 增加样本数以提高稳定性
+                        nsamples=150  # Increase samples for stability
                     )
                     
-                    # SHAP瀑布图
+                    # SHAP Waterfall Plot
                     st.markdown("### SHAP Waterfall Plot")
                     col1, col2, col3 = st.columns([1,6,1])
                     
                     with col2:
-                        # 逆标准化当前样本
+                        # Inverse Standardize Current Sample
                         sample_original = scaler.inverse_transform(X_std[selected_compound:selected_compound+1])
                         
-                        # 创建瀑布图
+                        # Create Waterfall Plot
                         fig, ax = plt.subplots(figsize=(8, 6))
                         shap.waterfall_plot(
                             shap.Explanation(
-                                values=shap_values[0,:,1],  # 使用正类的SHAP值
-                                base_values=explainer.expected_value[1],  # 模型基值
-                                data=sample_original[0],  # 逆标准化后的特征值
-                                feature_names=descriptor_names  # 特征名称
+                                values=shap_values[0,:,1],  # Use SHAP values for positive class
+                                base_values=explainer.expected_value[1],  # Model baseline value
+                                data=sample_original[0],  # Inverse standardized feature values
+                                feature_names=descriptor_names  # Feature names
                             ),
                             show=False,
-                            max_display=10  # 显示前15个最重要的特征
+                            max_display=10  # Display top 10 features
                         )
                         plt.title("Impact of Features on Model Prediction")
                         plt.tight_layout()
@@ -323,10 +323,10 @@ if uploaded_file is not None:
     except Exception as e:
         st.error(f"Error processing file: {str(e)}")
 else:
-    # 显示欢迎信息
+    # Display Welcome Message
     st.info("👆 Please upload your RDKit descriptors CSV file to begin the analysis.")
     
-    # 添加示例说明
+    # Add Example Instructions
     st.markdown("""
         ### 📝 Data Requirements
         1. Calculate RDKit descriptors from http://www.scbdd.com/rdk_desc/index/

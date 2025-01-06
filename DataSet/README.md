@@ -13,7 +13,8 @@ DataSet/
 ├── DIA_trainingset_RDKit_descriptors.csv   # Training set with RDKit descriptors
 └── DIA_testset_RDKit_descriptors.csv       # Test set with RDKit descriptors
 └── DIA-TrainingSet.sdf       
-└── DIA-TestSet.sdf      
+└── DIA-TestSet.sdf
+└── RDKit_Description.xlsx                  # The detail description of RDKit descriptors
 ```
 
 ## Data Format

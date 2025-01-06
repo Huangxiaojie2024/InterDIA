@@ -10,11 +10,16 @@ This folder contains the training and test datasets for the InterDIA project.
 ## File Structure
 ```
 DataSet/
-├── DIA_trainingset_RDKit_descriptors.csv   # Training set with RDKit descriptors
-└── DIA_testset_RDKit_descriptors.csv       # Test set with RDKit descriptors
-└── DIA-TrainingSet.sdf       
-└── DIA-TestSet.sdf
-└── RDKit_Description.xlsx                  # The detail description of RDKit descriptors
+├── DIA_trainingset_RDKit_descriptors.csv   # Training set with RDKit descriptors 
+├── DIA_testset_RDKit_descriptors.csv       # Test set with RDKit descriptors
+├── DIA_trainingset_DS_descriptors.csv      # Training set with Discovery Studio descriptors
+├── DIA_testset_DS_descriptors.csv          # Test set with Discovery Studio descriptors 
+├── DIA_trainingset_MOE_descriptors.csv     # Training set with MOE descriptors
+├── DIA_testset_MOE_descriptors.csv         # Test set with MOE descriptors
+├── DIA_trainingset_Mold2_descriptors.csv   # Training set with Mold2 descriptors
+├── DIA_testset_Mold2_descriptors.csv       # Test set with Mold2 descriptors
+├── DIA-TrainingSet.sdf                     # Training set molecular structures
+└── DIA-TestSet.sdf                         # Test set molecular structures
 ```
 
 ## Data Format

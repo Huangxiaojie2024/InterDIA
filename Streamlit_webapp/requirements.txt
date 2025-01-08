@@ -1,12 +1,10 @@
 streamlit
-scikit-learn
-rdkit
+scikit-learn==1.5.1
 numpy
 pandas
 imblearn
 shap
 IPython
-lime
 plotly
 seaborn
 scipy

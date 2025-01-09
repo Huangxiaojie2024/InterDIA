@@ -96,7 +96,7 @@ Monitor the deployment logs for any issues
 
 **Important Notes**
 
-Ensure all paths in app.py are relative
-Include all dependencies in requirements.txt
-Verify model files are properly uploaded
-Test locally before deployment
+Ensure all paths in app.py are relative;
+Include all dependencies in requirements.txt;
+Verify model files are properly uploaded;
+Test locally before deployment.

@@ -57,24 +57,24 @@ The web application uses:
 The input CSV should contain the RDKit descriptors
 
 ### Deployment Guide
-1. Connect GitHub Account
+1. **Connect GitHub Account**
 
 Visit Streamlit Cloud
 Click "Sign in with GitHub"
 Authorize Streamlit to access your repositories
 
-2. Create New Application
+2. **Create New Application**
 
 Click "New app" after logging in
 You'll see the "Deploy an app" page
 
-3. Configure Deployment
+3. **Configure Deployment**
 
 Select your GitHub repository
 Choose your branch (main or master)
 Enter "webapp/app.py" as the Main file path
 
-4. Launch Application
+4. **Launch Application**
 
 Click "Deploy"
 Streamlit will automatically:
@@ -83,18 +83,18 @@ Install required dependencies
 Launch the application
 Generate a public URL
 
-5. Access Application
+5. **Access Application**
 
 Use the provided URL to access your app
 Format: https://your-app-name.streamlit.app
 
-6. Maintenance
+6. **Maintenance**
 
 Updates to GitHub automatically trigger redeployment
 No manual deployment needed
 Monitor the deployment logs for any issues
 
-Important Notes
+**Important Notes**
 
 Ensure all paths in app.py are relative
 Include all dependencies in requirements.txt

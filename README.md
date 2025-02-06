@@ -76,7 +76,7 @@ Please check requirements.txt for detailed dependency information. Main packages
 If you use this code in your research, please cite:
 
 ```
-Huang, Lina, Peineng Liu, and Xiaojie Huang. "InterDIA: Interpretable Prediction of Drug-induced Autoimmunity through Ensemble Machine Learning Approaches." Toxicology (2025): 154064.
+Lina Huang, Peineng Liu, and Xiaojie Huang*. "InterDIA: Interpretable Prediction of Drug-induced Autoimmunity through Ensemble Machine Learning Approaches." Toxicology (2025): 154064.
 ```
 
 ## Contributing
